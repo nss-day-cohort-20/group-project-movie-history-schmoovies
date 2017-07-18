@@ -8,6 +8,7 @@ $("#auth-btn").click( () =>
 {
 	console.log("auth-btn-clicked");
 	$('#auth-btn').toggleClass('isHidden');
+	$('#unauth-btn').toggleClass('isHidden');
 	userFactory.logInGoogle()
 	.then( (result) => {
 		let user = result.user.uid;

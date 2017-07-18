@@ -1,6 +1,6 @@
 'use strict';
 
-let firebase = require("firebase");
+let firebase = require("firebase/app");
 let fbData = require('./fb-getter')(); //self invoke as it returns an unknown function
 
 //make fbData - so that we dont push up our api keys to github and make it publicly available

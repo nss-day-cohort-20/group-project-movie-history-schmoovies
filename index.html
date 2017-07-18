@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<lan
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+<html lang="en">
 
-</body>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./css/main.css">
+	</head>
+	<body>
+		<nav class="container" id="navBar">
+			<div class="row">
+				<div class="col">
+					<a href="#">Find New Movies</a>
+				</div>
+				<div class="col">
+					<a href="#">Search Your Movies</a>
+				</div>
+				<div class="col">
+					<button type="button" id="auth-btn">Google Sign In</button>
+				</div>
+				<div class="col">
+					<button type="button" id="unauth-btn" class="isHidden">Sign Out</button>
+				</div>
+			</div>
+		</nav>
+
+		<div id="pageWrapper" class="container">
+
+		<h1>Music History</h1>
+
+		<div id="viewLinks" class="row">
+			<div class="col"><a href="#">Show Unwatched</a></div>
+			<div class="col"><a href="#">Show Watched</a></div>
+		</div>
+
+		<div id="movieContainer" class="container-fluid">
+
+		</div>
+
+		</div>
+		<script src="./lib/node_modules/tether/dist/js/tether.min.js"></script>
+		<script src="./dist/app.js"></script>
+	</body>
 </html>

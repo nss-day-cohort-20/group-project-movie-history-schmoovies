@@ -1,14 +1,12 @@
-## Expected Behavior
-- 
+# Story
 
-## Actual Behavior
-- 
+As a user, 
 
-## Steps to Reproduce Behavior 
-- 
+# Acceptance Criteria
 
-## Module Suspected / Relevant Files 
-- 
+**Given** the user wants 
+**When** the user performs 
+**Then** 
+**And** 
 
-## Related Issues 
-- 
+# Technical Resource

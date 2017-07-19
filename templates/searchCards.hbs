@@ -1,12 +1,14 @@
-{{#each movies}}
-	<div class="movieCard" id="movie{{id}}">
-		<div class="cardHeader">
-			<h2>{{title}}</h2>
+<div class="row">
+	{{#each movies}}
+		<div class="movieCard col-sm-4" id="movie{{id}}">
+			<div class="cardHeader">
+				<h2>{{title}}</h2>
+			</div>
+			<div class="movieInfo">
+				{{> movieInfoPartial }}
+				{{!-- movie info partial goes here --}}
+			</div>
+			<div><a href="#" class="saveMovieLink">Add to Watchlist</a></div>
 		</div>
-		<div class="movieInfo">
-			{{ > movieInfoPartial }}
-			{{!-- movie info partial goes here --}}
-		</div>
-		<div><a href="#" class="saveMovieLink">Add to Watchlist</a></div>
-	</div>
-{{/each}}
+	{{/each}}
+</div>

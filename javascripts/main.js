@@ -6,3 +6,21 @@ let Handlebars = require('hbsfy/runtime');
 let bootstrap = require('../lib/node_modules/bootstrap/dist/js/bootstrap.min.js');
 require('./user-factory'); // user-factory makes sigin signout functions and runs
 
+
+
+
+
+
+
+//call for example 'BATMAN' search in data folder
+// $.ajax({
+// 	  url: `../data/search-results-batman.json`
+// 		})
+// 		.done( (data) => {
+// 			console.log('data', data);
+// 			let cards = searchCardTemplate({movies: data.results});
+// 			$("#movieContainer").append(cards);
+// 		})
+// 		.fail( (reject) => {
+// 			console.log('error in ajax');
+// 		});

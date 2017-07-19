@@ -10,17 +10,17 @@
 
 		<nav class="container" id="navBar">
 			<div class="row">
-				<div class="col">
+				<div class="col-4">
 					<input type="text" id="text-search-input">
+				</div class="col">
 					<input type="radio" id="new-search-radio" name="search" value="new">
 					<label for="new-search-radio">Find New Movies</label>
+				<div class="col">
 					<input type="radio" id="saved-search-radio" name="search" value="saved">
 					<label for="saved-search-radio">Search Your Movies</label>
 				</div>
 				<div class="col">
 					<button type="button" id="auth-btn">Google Sign In</button>
-				</div>
-				<div class="col">
 					<button type="button" id="unauth-btn" class="isHidden">Sign Out</button>
 				</div>
 			</div>
@@ -31,7 +31,6 @@
 			<div id="pageTitle">
 				<h1>Music History</h1>
 			</div>
-
 			<div id="viewLinks" class="row">
 				<div class="col"><a href="#">Show Unwatched</a></div>
 				<div class="col"><a href="#">Show Watched</a></div>
@@ -42,7 +41,6 @@
 			</div>
 
 		</div>
-
 		<script src="./lib/node_modules/tether/dist/js/tether.min.js"></script>
 		<script src="./dist/app.js"></script>
 	</body>

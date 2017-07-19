@@ -1,0 +1,43 @@
+'use strict';
+
+"url for cast search": "https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${api_key}"
+
+"cast": [
+        {
+            "cast_id": 6,
+            "character": "Batman / Bruce Wayne",
+            "credit_id": "52fe4a8bc3a368484e159843",
+            "gender": 2,
+            "id": 27811,
+            "name": "Peter Weller", // name of actor
+            "order": 0, // sort main actors
+            "profile_path": "/qTdm4vdZPsplJpnTU4fSprp0CxJ.jpg"
+        }
+
+
+"url for new search" : "https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${user_input}"
+
+{
+    "page": 1, // hit 1st page only to get 20 results 
+    "total_results": 94,
+    "total_pages": 5,
+    "results": [
+        {
+            "vote_count": 1871,
+            "id": 268, <-------
+            "video": false,
+            "vote_average": 7,
+            "title": "Batman", <-----
+            "popularity": 4.5119,
+            "poster_path": "/kBf3g9crrADGMc2AMAMlLBgSm2h.jpg", <-------
+            "original_language": "en",
+            "original_title": "Batman",
+            "genre_ids": [
+                14,
+                28
+            ],
+            "backdrop_path": "/2blmxp2pr4BhwQr74AdCfwgfMOb.jpg",
+            "adult": false,
+            "overview": "The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker, who has seized control of Gotham's underworld.",
+            "release_date": "1989-06-23" <------ splice the string to get first 4 characters
+        }

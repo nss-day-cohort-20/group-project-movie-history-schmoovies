@@ -11,6 +11,16 @@ module.exports.loadMoviesToDOM = () => {
 
 module.exports.setupEvents = () => {
 
-	//various handlers
+	//HANDLERS
+
+	//Show Watched
+
+	//Show Unwatched
+
+	//Add to unwatched list
+
+	//Move to watched list
+
+	//Modify rating
 
 };

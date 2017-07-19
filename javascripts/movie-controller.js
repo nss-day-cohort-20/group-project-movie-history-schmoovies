@@ -12,9 +12,17 @@ module.exports.loadMoviesToDOM = () => {
 
 //HANDLERS
 
+
+let $searchInput = $('#text-search-input');
 //Show New movies
 $(document).on('keyup', '#text-search-input', function(){
-	console.log('enter typed while in input');
+	if (event.key === 'Enter') {
+		// console.log('value with jquery', $searchInput.val());
+		db.newMoviesSearch($searchInput.val())
+		.then(function(searchResults){
+			console.log('data from movie factory new search method', searchResults);
+		});
+	}
 });
 
 

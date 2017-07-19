@@ -11,10 +11,11 @@
 		<nav class="container" id="navBar">
 			<div class="row">
 				<div class="col">
-					<a href="#">Find New Movies</a>
-				</div>
-				<div class="col">
-					<a href="#">Search Your Movies</a>
+					<input type="text" id="text-search-input">
+					<input type="radio" id="new-search-radio" name="search" value="new">
+					<label for="new-search-radio">Find New Movies</label>
+					<input type="radio" id="saved-search-radio" name="search" value="saved">
+					<label for="saved-search-radio">Search Your Movies</label>
 				</div>
 				<div class="col">
 					<button type="button" id="auth-btn">Google Sign In</button>

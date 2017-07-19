@@ -16,9 +16,10 @@ module.exports.loadMoviesToDOM = () => {
 
 
 let $searchInput = $('#text-search-input');
+let $radioNew = $('#new-search-radio');
 //Show New movies
 $(document).on('keyup', '#text-search-input', function(){
-	if (event.key === 'Enter') {
+	if (event.key === 'Enter' && $radioNew.is(':checked')) {
 		// console.log('value with jquery', $searchInput.val());
 		db.newMoviesSearch($searchInput.val())
 		.then(function(searchResults){

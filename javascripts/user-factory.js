@@ -17,12 +17,14 @@ let logOut = () =>
 $("#auth-btn").click( () =>
 {
 	console.log("auth-btn-clicked");
-	$('#auth-btn').toggleClass('isHidden');
-	$('#unauth-btn').toggleClass('isHidden');
+	// $('').toggleClass('isHidden');
+	// $('#unauth-btn').toggleClass('isHidden');
 	logInGoogle()
 	.then( (result) => {
 		let user = result.user.uid;
 		console.log('user', user);
+		$('#loginPage').toggleClass('isHidden');
+		$('#afterSignin').toggleClass('isHidden');
 		// do something with user here.
 	}).catch( (err) => {
 		console.log('error signing in', err);

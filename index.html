@@ -7,7 +7,8 @@
 	</head>
 
 	<body>
-
+	<!-- class="isHidden" put this in aftersignin div at the end of the project-->
+	<div id="afterSignin" class="isHidden" >
 		<nav class="container" id="navBar">
 			<div class="row">
 				<div class="col-4">
@@ -20,8 +21,7 @@
 					<label for="saved-search-radio">Search Your Movies</label>
 				</div>
 				<div class="col">
-					<button type="button" id="auth-btn">Google Sign In</button>
-					<button type="button" id="unauth-btn" class="isHidden">Sign Out</button>
+					<button type="button" id="unauth-btn">Sign Out</button>
 				</div>
 			</div>
 		</nav>
@@ -41,6 +41,10 @@
 			</div>
 
 		</div>
+	</div>
+	<div id="loginPage">
+		<button type="button" id="auth-btn">Google Sign In</button>
+	</div>
 		<script src="./lib/node_modules/tether/dist/js/tether.min.js"></script>
 		<script src="./dist/app.js"></script>
 	</body>

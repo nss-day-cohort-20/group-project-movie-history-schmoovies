@@ -9,18 +9,23 @@ module.exports.loadMoviesToDOM = () => {
 
 };
 
-module.exports.setupEvents = () => {
 
-	//HANDLERS
+//HANDLERS
 
-	//Show Watched
+//Show New movies
+$(document).on('keyup', '#text-search-input', function(){
+	console.log('enter typed while in input');
+});
 
-	//Show Unwatched
 
-	//Add to unwatched list
 
-	//Move to watched list
+//Show Watched
 
-	//Modify rating
+//Show Unwatched
 
-};
+//Add to unwatched list
+
+//Move to watched list
+
+//Modify rating
+

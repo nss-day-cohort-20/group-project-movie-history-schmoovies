@@ -2,13 +2,22 @@
 
 let $ = require('jquery');
 window.jQuery = require("jquery");
+require("../lib/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js");
 let Handlebars = require('hbsfy/runtime');
 let bootstrap = require('../lib/node_modules/bootstrap/dist/js/bootstrap.min.js');
 require('./user-factory'); // user-factory makes sigin signout functions and runs
 
+
 let userFactory = require('./user-factory');
 
 let movieController = require('./movie-controller');
+
+
+$(function() {
+      $('#example').barrating({
+        theme: 'bootstrap-stars'
+      });
+   });
 
 // songController.loadSongsToDom();
 // on click on sign in button.

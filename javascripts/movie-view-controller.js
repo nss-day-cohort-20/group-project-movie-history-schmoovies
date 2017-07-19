@@ -8,5 +8,5 @@ let searchCardTemplate = require ('../templates/searchCards.hbs');
 
 module.exports.searchDataToMovieCards = (data) => {
 	let cards = searchCardTemplate({movies: data.results});
-	$("#movieContainer").append(cards);
+	$("#movieContainer").html(cards);
 };

@@ -5,6 +5,8 @@ let db = require('./movie-factory');
 let templates = require('./template-builder');
 let $container = $('#movieContainer');
 
+let movieViewController = require('./movie-view-controller');
+
 module.exports.loadMoviesToDOM = () => {
 
 };
@@ -20,7 +22,8 @@ $(document).on('keyup', '#text-search-input', function(){
 		// console.log('value with jquery', $searchInput.val());
 		db.newMoviesSearch($searchInput.val())
 		.then(function(searchResults){
-			console.log('data from movie factory new search method', searchResults);
+			// console.log('data from movie factory new search method', searchResults);
+			movieViewController.searchDataToMovieCards(searchResults);
 		});
 	}
 });

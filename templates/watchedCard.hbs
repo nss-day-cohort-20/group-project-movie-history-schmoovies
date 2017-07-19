@@ -1,15 +1,41 @@
-{{#each movies}}
-	<div class="unwatchedCard" id="movie{{id}}">
-		<div class="cardHeader">
-			<h2>{{title}}</h2>
-			<button class="deleteCardBtn">X</button>
+<div class="row">
+	{{#each movies}}
+		<div class="watchedCard" id="movie{{id}}">
+			<div class="cardHeader">
+				<h2>{{title}}</h2>
+				<button class="deleteCardBtn">X</button>
+			</div>
+			<div class="movieInfo">
+				{{ > movieInfoPartial }}
+				{{!-- movie info partial goes here --}}
+			</div>
+			<div>
+				<div class="rating medium star-icon direction-ltr value-3 color-default label-hidden">
+					<div class="label-value">4</div>
+					<div class="star-container">
+						<div class="star">
+						    <i class="star-empty"></i>
+						    <i class="star-filled"></i>
+						</div>
+						<div class="star">
+						    <i class="star-empty"></i>
+						    <i class="star-filled"></i>
+						</div>
+						<div class="star">
+						    <i class="star-empty"></i>
+						    <i class="star-filled"></i>
+						</div>
+						<div class="star">
+						    <i class="star-empty"></i>
+						    <i class="star-filled"></i>
+						</div>
+						<div class="star">
+						    <i class="star-empty"></i>
+						    <i class="star-filled"></i>
+						</div>
+			    </div>
+				</div>
+			</div>
 		</div>
-		<div class="movieInfo">
-			{{ > movieInfoPartial }}
-			{{!-- movie info partial goes here --}}
-		</div>
-		<div id="rateYo">{{$("#rateYo").rateYo({
-    rating: 3.6
-  })}}</div>
-	</div>
-{{/each}}
+	{{/each}}
+</div>

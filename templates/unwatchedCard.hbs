@@ -1,13 +1,15 @@
-{{#each movies}}
-	<div class="unwatchedCard" id="movie{{id}}">
-		<div class="cardHeader">
-			<h2>{{title}}</h2>
-			<button class="deleteCardBtn">X</button>
+<div class="row">
+	{{#each movies}}
+		<div class="unwatchedCard" id="movie{{id}}">
+			<div class="cardHeader">
+				<h2>{{title}}</h2>
+				<button class="deleteCardBtn">X</button>
+			</div>
+			<div class="movieInfo">
+				{{ > movieInfoPartial }}
+				{{!-- movie info partial goes here --}}
+			</div>
+			<div><a href="#" class="addToWatchLink">Mark as Watched</a></div>
 		</div>
-		<div class="movieInfo">
-			{{ > movieInfoPartial }}
-			{{!-- movie info partial goes here --}}
-		</div>
-		<div><a href="#" class="addToWatchLink">Watched</a></div>
-	</div>
-{{/each}}
+	{{/each}}
+</div>

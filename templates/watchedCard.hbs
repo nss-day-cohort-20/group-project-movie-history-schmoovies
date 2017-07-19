@@ -1,0 +1,21 @@
+{{#each movies}}
+	<div class="watchedCard" id="movie{{id}}">
+		<div class="cardHeader">
+			<h2>{{title}}</h2>
+			<button class="deleteCardBtn">X</button>
+		</div>
+		<div class="movieInfo">
+			{{ > movieInfoPartial }}
+			{{!-- movie info partial goes here --}}
+		</div>
+		<div>
+			<select class="rating">
+				  <option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+				</select>
+		</div>
+	</div>
+{{/each}}

@@ -34,8 +34,7 @@ $(document).on('keyup', '#text-search-input', function(){
 
 
 //Add to unwatched list
-$(document).on('click', `.saveMovieLink`, function()
-{
+$(document).on('click', `.saveMovieLink`, function() {
 	let currentUser = firebase.auth().currentUser.uid;
 	// console.log(currentUser);
 	let movieId = event.target.classList[1]; //get the movie id
@@ -44,14 +43,12 @@ $(document).on('click', `.saveMovieLink`, function()
 		console.log("recievedMovieObj",recievedMovieObj);
 		fbFactory.saveInFirebase(recievedMovieObj);
 	});
-
-
 });
 
-//Show Watched
-
-//Show Unwatched
-
+//Saved Movies handler
+$(document).on('click', '#unwatchedLink', function() {
+	movieViewController.showSavedMovies();
+});
 
 //Move to watched list
 

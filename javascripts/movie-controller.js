@@ -9,29 +9,33 @@ let movieViewController = require('./movie-view-controller');
 
 let $container = $('#movieContainer');
 
-module.exports.loadMoviesToDOM = () => {
-
-};
-
-
 //HANDLERS
-
 
 let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
-//Show New movies
-$(document).on('keyup', '#text-search-input', function(){
+
+//Search handler - show all matching saved movies, then api matches
+$(document).on('keyup', '#text-search-input', function() {
 	// console.log('input event', event);
-	if (event.key === 'Enter' && $radioNew.is(':checked')) {
-		// console.log('value with jquery', $searchInput.val());
-		db.newMoviesSearch($searchInput.val())
-		.then(function(searchResults){
-			console.log('data from movie factory new search method', searchResults);
-			movieViewController.searchDataToMovieCards(searchResults);
-		});
+	if (event.key === 'Enter') {
+		$container.empty();
+		//grab search string
+		let queryString = $('#text-search-input').val();
+		//get user's movies
+		fbFactory.getUserMovies()
+		.then( (userMovies) => {
+			//filter to match search and store in array
+			let filteredMovies = [];
+			for (var movie in userMovies) {
+				if (userMovies[movie].title.toLowerCase().indexOf(queryString) != -1 ) {
+					filteredMovies.push(userMovies[movie]);
+				}
+			}
+			movieViewController.savedFBToMovieCards(filteredMovies);
+		  });
+
 	}
 });
-
 
 //Add to unwatched list
 $(document).on('click', `.saveMovieLink`, function() {
@@ -43,11 +47,6 @@ $(document).on('click', `.saveMovieLink`, function() {
 		console.log("recievedMovieObj",recievedMovieObj);
 		fbFactory.saveInFirebase(recievedMovieObj);
 	});
-});
-
-//Saved Movies handler
-$(document).on('click', '#unwatchedLink', function() {
-	movieViewController.showSavedMovies();
 });
 
 //Move to watched list

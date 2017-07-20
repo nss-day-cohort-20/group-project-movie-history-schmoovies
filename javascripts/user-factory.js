@@ -3,19 +3,18 @@
 let $ = require('jquery');
 let firebase = require('./firebaseConfig');
 let provider = new firebase.auth.GoogleAuthProvider();
-let logInGoogle = () =>
-{
+let movieViewController = require('./movie-view-controller');
+
+let logInGoogle = () => {
 	console.log("in auth");
 	return firebase.auth().signInWithPopup(provider);
 };
 
-let logOut = () =>
-{
+let logOut = () => {
 	return firebase.auth().signOut();
 };
 
-$("#auth-btn").click( () =>
-{
+$("#auth-btn").click( () => {
 	console.log("auth-btn-clicked");
 	// $('').toggleClass('isHidden');
 	// $('#unauth-btn').toggleClass('isHidden');
@@ -25,23 +24,21 @@ $("#auth-btn").click( () =>
 		console.log('user', user);
 		$('#loginPage').toggleClass('isHidden');
 		$('#afterSignin').toggleClass('isHidden');
-		// do something with user here.
+		movieViewController.showSavedMovies();
 	}).catch( (err) => {
 		console.log('error signing in', err);
 	});
 });
 
 // on click on logout button. make sure it has isHidden class.
-$("#unauth-btn").click( () =>
-{
+$("#unauth-btn").click( () => {
 	console.log('unauth-btn clicked');
 	logOut()
 	.then( (result) => {
 		console.log('Successfully signed out');
 		location.reload();
 	})
-	.catch( (err) =>
-	{
+	.catch( (err) => {
 		console.log('error signing you out', err);
 	});
 });

@@ -10,13 +10,12 @@ let unwatchedCardTemplate = require ('../templates/unwatchedCard.hbs');
 let fbFactory = require('./firebase-factory');
 let fbURL = "https://schmoovies-e903e.firebaseio.com";
 
-
 module.exports.searchDataToMovieCards = (data) => {
 	let cards = searchCardTemplate({movies: data.results});
 	$("#movieContainer").append(cards);
 };
 
-module.exports.unwatchedFBToMovieCards = (data) => {
+module.exports.savedFBToMovieCards = (data) => {
 	console.log('user movies from FB', data);
 	let cards = unwatchedCardTemplate({movies: data});
 	$("#movieContainer").html(cards);
@@ -31,7 +30,6 @@ module.exports.deleteFromScreen = (movieObjId) => {
 	    	let movieId = movieObj.id;
 	      $(`#movie${movieId}`).remove();
 	      resolve(movieObj.id);
-
 	    }).fail( (err) => {
 	    	console.log("error", err);
 	    });
@@ -44,7 +42,7 @@ module.exports.showSavedMovies = () => {
 	fbFactory.getUserMovies()
 	.then( (userMovieData) => {
 		console.log('userMovieData', userMovieData);
-		module.exports.unwatchedFBToMovieCards(userMovieData);
+		module.exports.savedFBToMovieCards(userMovieData);
 	})
 	.catch( (error) => {
 		console.log('error', error);

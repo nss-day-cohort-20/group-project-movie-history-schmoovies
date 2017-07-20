@@ -50,7 +50,6 @@ module.exports.newMoviesSearch = (searchString) => {
 				// console.log('modified search results', dataFromMovieSearchApi);
 				resolve(dataFromMovieSearchApi);
 			});
-
 			// resolve(dataFromMovieSearchApi);
 		}).fail((err) => {
 			console.log('error from search api request', err);
@@ -58,6 +57,32 @@ module.exports.newMoviesSearch = (searchString) => {
 		});
 	});
 
+};
+
+module.exports.getOneMovie = (movieId) =>
+{
+	return new Promise( (resolve, reject) =>
+	{
+		let currentUser = firebase.auth().currentUser.uid;
+		let apiKey = getApiKey.api_key;
+		$.ajax({
+			url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
+		}).done( (requestedMovie) => {
+			console.log(requestedMovie, "requestedMovie");
+			let movieObj = {};
+			movieObj.title = requestedMovie.title;
+			movieObj.id = requestedMovie.id;
+			movieObj.year = requestedMovie.release_date.slice(0,4);
+			movieObj.poster_path = requestedMovie.poster_path;
+			movieObj.uid = currentUser;
+			movieObj.watched = false;
+			movieObj.rating = 0;
+			resolve(movieObj);
+		}).fail( (err) => {
+				console.log('error from search api request', err);
+				reject(err);
+		});
+	});
 };
 
 module.exports.savedMoviesSearch = (searchString) => {

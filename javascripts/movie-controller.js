@@ -3,10 +3,11 @@
 let $ = require('jquery');
 let db = require('./movie-factory');
 let templates = require('./template-builder');
-let $container = $('#movieContainer');
 let firebase = require('./firebaseConfig');
-let fbController = require('./firebase-controller');
+let fbFactory = require('./firebase-factory');
 let movieViewController = require('./movie-view-controller');
+
+let $container = $('#movieContainer');
 
 module.exports.loadMoviesToDOM = () => {
 
@@ -41,10 +42,10 @@ $(document).on('click', `.saveMovieLink`, function()
 	db.getOneMovie(movieId)
 	.then( (recievedMovieObj) => {
 		console.log("recievedMovieObj",recievedMovieObj);
-		fbController.saveInFirebase(recievedMovieObj);
+		fbFactory.saveInFirebase(recievedMovieObj);
 	});
 
-	
+
 });
 
 //Show Watched

@@ -30,7 +30,6 @@ module.exports.deleteFromScreen = (movieObjId) => {
 	    	let movieId = movieObj.id;
 	      $(`#movie${movieId}`).remove();
 	      resolve(movieObj.id);
-
 	    }).fail( (err) => {
 	    	console.log("error", err);
 	    });

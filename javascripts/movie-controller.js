@@ -9,10 +9,6 @@ let movieViewController = require('./movie-view-controller');
 
 let $container = $('#movieContainer');
 
-module.exports.loadMoviesToDOM = () => {
-
-};
-
 //HANDLERS
 
 let $searchInput = $('#text-search-input');
@@ -21,11 +17,12 @@ let $radioNew = $('#new-search-radio');
 //Search handler - show all matching saved movies, then api matches
 $(document).on('keyup', '#text-search-input', function(){
 	// console.log('input event', event);
-	if (event.key === 'Enter' && $radioNew.is(':checked')) {
+	if (event.key === 'Enter') {
 		// console.log('value with jquery', $searchInput.val());
+
 		db.newMoviesSearch($searchInput.val())
 		.then(function(searchResults){
-			console.log('data from movie factory new search method', searchResults);
+			// console.log('data from movie factory new search method', searchResults);
 			movieViewController.searchDataToMovieCards(searchResults);
 		});
 	}
@@ -43,15 +40,6 @@ $(document).on('click', `.saveMovieLink`, function() {
 		fbFactory.saveInFirebase(recievedMovieObj);
 	});
 });
-
-// Saved Movies handler
-// $(document).on('click', '#unwatched-btn, #watched-btn', function() {
-// 	console.log('click', this);
-// 	movieViewController.showSavedMovies();
-// });
-
-//Search handler
-
 
 //Move to watched list
 

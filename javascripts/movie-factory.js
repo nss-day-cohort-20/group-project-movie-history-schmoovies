@@ -59,15 +59,12 @@ module.exports.newMoviesSearch = (searchString) => {
 
 };
 
-module.exports.getOneMovie = (movieId) =>
-{
-	return new Promise( (resolve, reject) =>
-	{
+module.exports.getOneMovie = (movieId) => {
+	return new Promise( (resolve, reject) => {
 		let currentUser = firebase.auth().currentUser.uid;
 		let apiKey = getApiKey.api_key;
 		actorSearch(movieId)
-		.then( (actors) =>
-		{
+		.then( (actors) => {
 			let actorsArray = actors;
 		$.ajax({
 			url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
@@ -92,13 +89,14 @@ module.exports.getOneMovie = (movieId) =>
 };
 
 module.exports.savedMoviesSearch = (searchString) => {
+	// songs.json?orderBy="uid"&equalTo="${currentUser}"
 
 };
 
-module.exports.getUnWatchedMovies = () => {
+// module.exports.getUnWatchedMovies = () => {
 
-};
+// };
 
-module.exports.getWatchedMovides = () => {
+// module.exports.getWatchedMovides = () => {
 
-};
+// };

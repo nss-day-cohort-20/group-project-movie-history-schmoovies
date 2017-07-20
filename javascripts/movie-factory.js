@@ -86,7 +86,7 @@ module.exports.getOneMovie = (movieId) =>
 		}).fail( (err) => {
 				console.log('error from search api request', err);
 				reject(err);
-		});
+			});
 		});
 	});
 };

@@ -1,6 +1,6 @@
 <div class="row">
 	{{#each movies}}
-		<div class="unwatchedCard" id="movie{{id}}">
+		<div class="savedCard" id="movie{{id}}">
 			<div class="cardHeader">
 				<h2>{{title}}</h2>
 				<button class="deleteCardBtn">X</button>
@@ -9,7 +9,13 @@
 				{{> movieInfoPartial }}
 				{{!-- movie info partial goes here --}}
 			</div>
-			<div><a href="#" class="addToWatchLink" data-watch-id="">Mark as Watched</a></div>
+			<div>
+				<a href="#" class="rateLink">
+					<div class="rating">
+						<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+					</div>
+				</a>
+			</div>
 		</div>
 	{{/each}}
 </div>

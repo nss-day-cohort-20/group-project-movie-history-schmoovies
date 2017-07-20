@@ -8,3 +8,6 @@ require('./user-factory'); // user-factory makes sigin signout functions and run
 let userFactory = require('./user-factory');
 let movieController = require('./movie-controller');
 
+//use to test getting a user's database in the console, remove after that view is finished.
+// window.fbFactory = require('./firebase-factory.js');
+

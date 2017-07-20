@@ -10,3 +10,26 @@
 .movie-poster img {
 	max-width: 100%;
 }
+
+#signinBackground {
+	background : #bad;
+	width: 100%;
+	height: 100vh;
+}
+
+#auth-btn {
+	align: center;
+}
+
+.container {
+	width: 100%;
+}
+
+.filterBar {
+	div {
+		padding: 0;
+		button {
+			width: 100%;
+		}
+	}
+}

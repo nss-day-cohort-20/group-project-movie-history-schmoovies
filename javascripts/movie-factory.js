@@ -65,6 +65,10 @@ module.exports.getOneMovie = (movieId) =>
 	{
 		let currentUser = firebase.auth().currentUser.uid;
 		let apiKey = getApiKey.api_key;
+		actorSearch(movieId)
+		.then( (actors) =>
+		{
+			let actorsArray = actors;
 		$.ajax({
 			url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`
 		}).done( (requestedMovie) => {
@@ -77,10 +81,12 @@ module.exports.getOneMovie = (movieId) =>
 			movieObj.uid = currentUser;
 			movieObj.watched = false;
 			movieObj.rating = 0;
+			movieObj.actors = actorsArray;
 			resolve(movieObj);
 		}).fail( (err) => {
 				console.log('error from search api request', err);
 				reject(err);
+			});
 		});
 	});
 };

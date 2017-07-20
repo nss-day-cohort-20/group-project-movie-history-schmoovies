@@ -3,10 +3,11 @@
 let $ = require('jquery');
 let db = require('./movie-factory');
 let templates = require('./template-builder');
-let $container = $('#movieContainer');
 let firebase = require('./firebaseConfig');
-let fbController = require('./firebase-controller');
+let fbFactory = require('./firebase-factory');
 let movieViewController = require('./movie-view-controller');
+
+let $container = $('#movieContainer');
 
 module.exports.loadMoviesToDOM = () => {
 
@@ -33,24 +34,21 @@ $(document).on('keyup', '#text-search-input', function(){
 
 
 //Add to unwatched list
-$(document).on('click', `.saveMovieLink`, function()
-{
+$(document).on('click', `.saveMovieLink`, function() {
 	let currentUser = firebase.auth().currentUser.uid;
 	// console.log(currentUser);
 	let movieId = event.target.classList[1]; //get the movie id
 	db.getOneMovie(movieId)
 	.then( (recievedMovieObj) => {
 		console.log("recievedMovieObj",recievedMovieObj);
-		fbController.saveInFirebase(recievedMovieObj);
+		fbFactory.saveInFirebase(recievedMovieObj);
 	});
-
-	
 });
 
-//Show Watched
-
-//Show Unwatched
-
+//Saved Movies handler
+$(document).on('click', '#unwatchedLink', function() {
+	movieViewController.showSavedMovies();
+});
 
 //Move to watched list
 

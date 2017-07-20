@@ -15,19 +15,27 @@ let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
 
 //Search handler - show all matching saved movies, then api matches
-$(document).on('keyup', '#text-search-input', function(){
+$(document).on('keyup', '#text-search-input', function() {
 	// console.log('input event', event);
 	if (event.key === 'Enter') {
-		// console.log('value with jquery', $searchInput.val());
+		$container.empty();
+		//grab search string
+		let queryString = $('#text-search-input').val();
+		//get user's movies
+		fbFactory.getUserMovies()
+		.then( (userMovies) => {
+			//filter to match search and store in array
+			let filteredMovies = [];
+			for (var movie in userMovies) {
+				if (userMovies[movie].title.toLowerCase().indexOf(queryString) != -1 ) {
+					filteredMovies.push(userMovies[movie]);
+				}
+			}
+			movieViewController.savedFBToMovieCards(filteredMovies);
+		  });
 
-		db.newMoviesSearch($searchInput.val())
-		.then(function(searchResults){
-			// console.log('data from movie factory new search method', searchResults);
-			movieViewController.searchDataToMovieCards(searchResults);
-		});
 	}
 });
-
 
 //Add to unwatched list
 $(document).on('click', `.saveMovieLink`, function() {

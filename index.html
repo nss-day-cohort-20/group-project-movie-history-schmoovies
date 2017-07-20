@@ -7,43 +7,45 @@
 	</head>
 
 	<body>
-	<!-- class="isHidden" put this in aftersignin div at the end of the project-->
-	<div id="afterSignin" class="isHidden" >
-		<nav class="container" id="navBar">
-			<div class="row">
-				<div class="col-4">
-					<input type="text" id="text-search-input">
-				</div class="col">
-					<input type="radio" id="new-search-radio" name="search" value="new">
-					<label for="new-search-radio">Find New Movies</label>
-				<div class="col">
-					<input type="radio" id="saved-search-radio" name="search" value="saved">
-					<label for="saved-search-radio">Search Your Movies</label>
+	<div id="pageWrapper" class="container">
+		<div id="afterSignin" class="isHidden" >
+			<nav class="container" id="navBar">
+				<div>
+					<div class="row">
+						<input type="text" id="text-search-input" class="col-8" >
+						<button type="button" id="unauth-btn" class="col-4">Sign Out</button>
+					</div>
+					<div id="pageStatus">
+						<h2>Music History</h2>
+					</div>
+					<div class = "row filterBar">
+						<div class="col-2">
+							<button type="button" class="untracked-btn">Show Untracked</button>
+						</div>
+						<div class="col-2">
+							<button type="button" class="unwatched-btn">Show Unwatched</button>
+						</div>
+						<div class="col-2">
+							<button type="button" class="watched-btn">Show Watched</button>
+						</div>
+						<div class="col-2">
+							<button type="button" class="fav-btn">Favorites</button>
+						</div>
+					</div>
 				</div>
-				<div class="col">
-					<button type="button" id="unauth-btn">Sign Out</button>
-				</div>
-			</div>
-		</nav>
-
-		<div id="pageWrapper" class="container">
-
-			<div id="pageTitle">
-				<h1>Music History</h1>
-			</div>
-			<div id="viewLinks" class="row">
-				<div class="col" id="unwatchedLink"><a href="#">Show Unwatched</a></div>
-				<div class="col" id="watchedLink"><a href="#">Show Watched</a></div>
-			</div>
-
+			</nav>
 			<div id="movieContainer" class="container-fluid">
 				<!-- movie cards go here -->
 			</div>
-
 		</div>
 	</div>
 	<div id="loginPage">
-		<button type="button" id="auth-btn">Google Sign In</button>
+		<div id=signinHeader>
+			<h1>Schmoovies - Get your movies organized</h1>
+		</div>
+		<div id="signinBackground">
+			<button type="button" id="auth-btn">Google Sign In</button>
+		</div>
 	</div>
 		<script src="./lib/node_modules/tether/dist/js/tether.min.js"></script>
 		<script src="./dist/app.js"></script>

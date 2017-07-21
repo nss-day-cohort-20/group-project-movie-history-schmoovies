@@ -62,8 +62,12 @@ $(document).on('click', `.saveMovieLink`, function() {
 
 //Modify rating NOT FINISHED YET
 $(document).on('click', '.rating span', function() {
-	console.log('star was clicked', event.target);
-	// fbFactory.modifyRating();
+	// console.log('star was clicked', event.target);
+	console.log('the rating is', $(this).data('rate'));
+	let ratingObj = {};
+	ratingObj.rating = $(this).data('rate');
+	console.log('rating object', ratingObj);
+	// fbFactory.modifyRating(ratingObj);
 });
 
 //FILTERS - TODO - Dry these up.

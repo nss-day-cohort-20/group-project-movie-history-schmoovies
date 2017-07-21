@@ -17,7 +17,14 @@ module.exports.searchDataToMovieCards = (data) => {
 
 module.exports.savedFBToMovieCards = (data) => {
 	console.log('user movies from FB', data);
-	let cards = savedCardsTemplate({movies: data});
+	// console.log("keys on movies", Object.keys(data));
+	let moviesToRender = [];
+	for(var movie in data) {
+		data[movie].fbId = movie;
+		moviesToRender.push(data[movie]);
+	}
+	console.log('movies array that we should render', moviesToRender);
+	let cards = savedCardsTemplate({movies: moviesToRender});
 	$("#movieContainer").append(cards);
 };
 

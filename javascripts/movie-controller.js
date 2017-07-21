@@ -47,7 +47,7 @@ $(document).on('keyup', '#text-search-input', function() {
 				});
 			});
 		});
-		appendFilterBreadcrumb("");
+		$('#pageStatus').html('<h2>Movie History</h2>');
 	}
 });
 

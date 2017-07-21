@@ -48,6 +48,13 @@ $(document).on('keyup', '#text-search-input', function() {
 	}
 });
 
+//change breadcrumb on filter
+function appendFilterBreadcrumb(filterName) {
+	let breadcrumbString = filterName;
+	document.createElement('span');
+	$(pageStatus).
+}
+
 //Add to unwatched list
 $(document).on('click', `.saveMovieLink`, function() {
 	let currentUser = firebase.auth().currentUser.uid;

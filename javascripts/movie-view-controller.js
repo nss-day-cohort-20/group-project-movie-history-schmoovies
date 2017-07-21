@@ -43,7 +43,6 @@ module.exports.showSavedMovies = () => {
 	fbFactory.getUserMovies()
 	.then( (userMovieData) => {
 		console.log('userMovieData', userMovieData);
-		// module.exports.savedFBToMovieCards(userMovieData);
 		module.exports.savedFBToMovieCards(userMovieData);
 	})
 	.catch( (error) => {

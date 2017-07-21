@@ -34,13 +34,14 @@ $(document).on('keyup', '#text-search-input', function() {
 			return db.newMoviesSearch(queryString);
 		  })
 		.then( (newMovies) => {
+			console.log("newMovies", newMovies);
 			movieViewController.searchDataToMovieCards(newMovies);
 
 			newMovies.results.forEach( (movie) => {
 				filteredMovies.forEach( (fmovie) => {
 					if(movie.id === fmovie.id) {
 						console.log("found one");
-						$(`#searchedMovie${fmovie.id}`).remove();
+						// $(`#searchedMovie${fmovie.id}`).remove(); change the template instead
 					}
 				});
 			});
@@ -56,7 +57,7 @@ $(document).on('click', `.saveMovieLink`, function() {
 	let movieId = event.target.classList[1]; //get the movie id
 	db.getOneMovie(movieId)
 	.then( (recievedMovieObj) => {
-		console.log("recievedMovieObj",recievedMovieObj);
+		// console.log("recievedMovieObj",recievedMovieObj);
 		fbFactory.saveInFirebase(recievedMovieObj);
 		movieViewController.savedFBToMovieCards(recievedMovieObj);
 	});

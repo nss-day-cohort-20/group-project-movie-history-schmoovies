@@ -32,7 +32,13 @@ $(document).on('keyup', '#text-search-input', function() {
 				}
 			}
 			movieViewController.savedFBToMovieCards(filteredMovies);
-		  });
+			return db.newMoviesSearch(queryString);
+		  })
+		.then( (newMovies) => {
+			// db.actorSearch( )
+			console.log(newMovies);
+			movieViewController.searchDataToMovieCards(newMovies);
+		});
 
 	}
 });

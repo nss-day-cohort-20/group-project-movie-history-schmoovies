@@ -75,7 +75,7 @@ module.exports.getOneMovie = (movieId) => {
 			movieObj.id = requestedMovie.id;
 			movieObj.year = requestedMovie.release_date.slice(0,4);
 			if(requestedMovie.poster_path === null) {
-				console.log("poster less movie");
+				// console.log("poster less movie");
 				movieObj.poster_path = '../images/default-poster.png';
 			}
 			else

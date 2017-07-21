@@ -12,14 +12,15 @@ let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
 
 
-let filteredMovies = [];
 //Search handler - show all matching saved movies, then api matches
 $(document).on('keyup', '#text-search-input', function() {
+let filteredMovies = [];
 	// console.log('input event', event);
 	if (event.key === 'Enter') {
 		$container.empty();
 		//grab search string
 		let queryString = $('#text-search-input').val();
+		$('#text-search-input').val('');
 		//get user's movies
 		fbFactory.getUserMovies()
 		.then( (userMovies) => {
@@ -41,7 +42,7 @@ $(document).on('keyup', '#text-search-input', function() {
 				filteredMovies.forEach( (fmovie) => {
 					if(movie.id === fmovie.id) {
 						console.log("found one");
-						// $(`#searchedMovie${fmovie.id}`).remove(); change the template instead
+						$(`#searchedMovie${fmovie.id}`).remove(); //change the template instead
 					}
 				});
 			});
@@ -67,4 +68,12 @@ $(document).on('click', `.saveMovieLink`, function() {
 $(document).on('click', '.rating span', function() {
 	console.log('star was clicked', event.target);
 	// fbFactory.modifyRating();
+});
+
+$(document).on('click', '.deleteCardBtn', function() {
+	let movieId = event.target.classList[1].slice(6);
+
+	// console.log("id", movieId);
+	// console.log("movie", $(`.movie${movieId}`));
+	// $(`.movie${movieId}`).remove();
 });

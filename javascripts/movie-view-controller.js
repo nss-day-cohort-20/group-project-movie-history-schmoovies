@@ -28,7 +28,7 @@ module.exports.deleteFromScreen = (movieObjId) => {
 	      type: "GET"
 	    }).done( (movieObj) => {
 	    	let movieId = movieObj.id;
-	      $(`#movie${movieId}`).remove();
+	      $(`#searchedMovie${movieId}`).remove();
 	      resolve(movieObj.id);
 	    }).fail( (err) => {
 	    	console.log("error", err);

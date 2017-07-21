@@ -58,6 +58,7 @@ $(document).on('click', `.saveMovieLink`, function() {
 	.then( (recievedMovieObj) => {
 		console.log("recievedMovieObj",recievedMovieObj);
 		fbFactory.saveInFirebase(recievedMovieObj);
+		$(`#searchedMovie${movieId}`).remove();
 	});
 });
 

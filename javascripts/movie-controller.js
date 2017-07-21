@@ -14,6 +14,7 @@ let $container = $('#movieContainer');
 let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
 
+let filteredMovies = [];
 //Search handler - show all matching saved movies, then api matches
 $(document).on('keyup', '#text-search-input', function() {
 	// console.log('input event', event);
@@ -25,7 +26,6 @@ $(document).on('keyup', '#text-search-input', function() {
 		fbFactory.getUserMovies()
 		.then( (userMovies) => {
 			//filter to match search and store in array
-			let filteredMovies = [];
 			for (var movie in userMovies) {
 				if (userMovies[movie].title.toLowerCase().indexOf(queryString) != -1 ) {
 					filteredMovies.push(userMovies[movie]);
@@ -35,9 +35,15 @@ $(document).on('keyup', '#text-search-input', function() {
 			return db.newMoviesSearch(queryString);
 		  })
 		.then( (newMovies) => {
-			// db.actorSearch( )
-			console.log(newMovies);
 			movieViewController.searchDataToMovieCards(newMovies);
+			newMovies.results.forEach( (movie) => {
+				filteredMovies.forEach( (fmovie) => {
+					if(movie.id === fmovie.id) {
+						console.log("found one");
+						$(`#searchedMovie${fmovie.id}`).remove();
+					}
+				});
+			});
 		});
 
 	}

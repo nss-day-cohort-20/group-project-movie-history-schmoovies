@@ -30,15 +30,15 @@ $(document).on('keyup', '#text-search-input', function() {
 					filteredMovies.push(userMovies[movie]);
 				}
 			}
-			// movieViewController.savedFBToMovieCards(filteredMovies);
-			movieViewController.movieCardsView(filteredMovies);
+			movieViewController.savedFBToMovieCards(filteredMovies);
+			// movieViewController.movieCardsView(filteredMovies);
 			return db.newMoviesSearch(queryString);
 		  })
 		.then( (newMovies) => {
 			// db.actorSearch( )
 			console.log(newMovies);
-			// movieViewController.searchDataToMovieCards(newMovies);
-			movieViewController.movieCardsView(newMovies);
+			movieViewController.searchDataToMovieCards(newMovies);
+			// movieViewController.movieCardsView(newMovies);
 		});
 
 	}

@@ -1,0 +1,19 @@
+	{{#each movies}}
+		<div class="unwatchedCard" id="movie{{id}}">
+			<div class="cardHeader">
+				<h2>{{title}}</h2>
+				{{#if uid}}
+				<button class="deleteCardBtn">X</button>
+				{{/if}}
+			</div>
+			<div class="movieInfo">
+				{{> movieInfoPartial }}
+				{{!-- movie info partial goes here --}}
+			</div>
+			{{#if uid}}
+			<div class="rating"><span id="star1">☆</span><span id="star2">☆</span><span id="star3">☆</span><span id="star4">☆</span><span id="star5">☆</span><span id="star6">☆</span><span id="star7">☆</span><span id="star8">☆</span><span id="star9">☆</span><span id="star10">☆</span></div>
+			{{else}}
+			<div><a href="#" class="saveMovieLink {{id}}">Add to Watchlist</a></div>
+			{{/if}}
+		</div>
+	{{/each}}

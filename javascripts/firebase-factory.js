@@ -32,3 +32,21 @@ module.exports.getUserMovies = () => {
 	    });
 	});
 };
+
+// start of method to update an movie rating TODO: needs testing
+module.exports.modifyRating = (ratingObj, movieFBkey) => {
+	return new Promise((resolve, reject) => {
+		$.ajax({
+			url: `${fbURL}/movies/${movieFBkey}.json`,
+			type: "PATCH",
+			data: JSON.stringify(ratingObj), //stringify converts our object format to string format of JSON
+			dataType: 'json'
+		}).done((updatedData)=>{
+			console.log('the movie rating was updated',updatedData);
+			resolve(updatedData);
+		}).fail((err)=>{
+			console.log('the movies was not updated', err);
+			reject(err);
+		});
+	});
+};

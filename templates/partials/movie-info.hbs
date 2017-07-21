@@ -4,8 +4,8 @@
 <date>{{year}}</date>
 <section class="cast">
 	<ul>
-		<li>{{cast1}}</li>
-		<li>{{cast2}}</li>
-		<li>{{cast3}}</li>
+		{{#each actors}}
+		<li>{{this}}</li>
+		{{/each}}
 	</ul>
 </section>

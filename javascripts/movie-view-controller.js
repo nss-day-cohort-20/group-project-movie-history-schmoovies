@@ -6,6 +6,7 @@ let Handlebars = require('hbsfy/runtime');
 Handlebars.registerPartial( "movieInfoPartial", require('../templates/partials/movie-info.hbs') );
 let searchCardTemplate = require ('../templates/searchCards.hbs');
 let unwatchedCardTemplate = require ('../templates/unwatchedCard.hbs');
+let cardsTemplate = require('../templates/cards.hbs');
 
 let fbFactory = require('./firebase-factory');
 let fbURL = "https://schmoovies-e903e.firebaseio.com";
@@ -18,7 +19,20 @@ module.exports.searchDataToMovieCards = (data) => {
 module.exports.savedFBToMovieCards = (data) => {
 	console.log('user movies from FB', data);
 	let cards = unwatchedCardTemplate({movies: data});
-	$("#movieContainer").html(cards);
+	$("#movieContainer").append(cards);
+};
+
+module.exports.movieCardsView = (data) => {
+	console.log('data to render', data);
+	if (data.results !== undefined) {
+		// if the data is from TMDB search
+		let cards = cardsTemplate({movies: data.results});
+		$("#movieContainer").append(cards);
+	} else {
+		// else data is from a firebase search
+		let cards = cardsTemplate({movies: data});
+		$("#movieContainer").append(cards);
+	}
 };
 
 module.exports.deleteFromScreen = (movieObjId) => {
@@ -42,7 +56,8 @@ module.exports.showSavedMovies = () => {
 	fbFactory.getUserMovies()
 	.then( (userMovieData) => {
 		console.log('userMovieData', userMovieData);
-		module.exports.savedFBToMovieCards(userMovieData);
+		// module.exports.savedFBToMovieCards(userMovieData);
+		module.exports.movieCardsView(userMovieData);
 	})
 	.catch( (error) => {
 		console.log('error', error);

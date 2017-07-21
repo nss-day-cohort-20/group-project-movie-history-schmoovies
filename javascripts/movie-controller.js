@@ -8,11 +8,10 @@ let fbFactory = require('./firebase-factory');
 let movieViewController = require('./movie-view-controller');
 
 let $container = $('#movieContainer');
-
-//HANDLERS
-
 let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
+
+//HANDLERS
 
 //Search handler - show all matching saved movies, then api matches
 $(document).on('keyup', '#text-search-input', function() {
@@ -31,13 +30,15 @@ $(document).on('keyup', '#text-search-input', function() {
 					filteredMovies.push(userMovies[movie]);
 				}
 			}
-			movieViewController.savedFBToMovieCards(filteredMovies);
+			// movieViewController.savedFBToMovieCards(filteredMovies);
+			movieViewController.movieCardsView(filteredMovies);
 			return db.newMoviesSearch(queryString);
 		  })
 		.then( (newMovies) => {
 			// db.actorSearch( )
 			console.log(newMovies);
-			movieViewController.searchDataToMovieCards(newMovies);
+			// movieViewController.searchDataToMovieCards(newMovies);
+			movieViewController.movieCardsView(newMovies);
 		});
 
 	}
@@ -55,7 +56,8 @@ $(document).on('click', `.saveMovieLink`, function() {
 	});
 });
 
-//Move to watched list
-
-//Modify rating
-
+//Modify rating NOT FINISHED YET
+$(document).on('click', '.rating span', function() {
+	console.log('star was clicked', event.target);
+	// fbFactory.modifyRating();
+});

@@ -1,5 +1,9 @@
 <section class="movie-poster">
+{{#if poster_path}}
 	<img src="https://image.tmdb.org/t/p/w500{{poster_path}}">
+{{else}}
+	<img src="../images/default-poster.png">
+{{/if}}
 </section>
 <date>{{year}}</date>
 <section class="cast">

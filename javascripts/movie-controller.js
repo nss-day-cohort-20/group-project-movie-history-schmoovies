@@ -47,15 +47,9 @@ $(document).on('keyup', '#text-search-input', function() {
 				});
 			});
 		});
+		appendFilterBreadcrumb("");
 	}
 });
-
-//change breadcrumb on filter
-function appendFilterBreadcrumb(filterName) {
-	let breadcrumbString = filterName;
-	document.createElement('span');
-	$(pageStatus).
-}
 
 //Add to unwatched list
 $(document).on('click', `.saveMovieLink`, function() {
@@ -81,6 +75,12 @@ $(document).on('click', '.rating span', function() {
 });
 
 //FILTERS - TODO - Dry these up.
+
+//change breadcrumb on filter
+function appendFilterBreadcrumb(filterName) {
+	let breadcrumbString = `<h2>Movie History > <span>&nbsp; ${filterName} </span></h2>`;
+	$('#pageStatus').html(breadcrumbString);
+}
 //show only unsaved/untracked movies
 $(document).on('click', '#untracked-btn', function() {
 	let allMovieCards = $('.movieCard');
@@ -90,6 +90,7 @@ $(document).on('click', '#untracked-btn', function() {
 			$(this).removeClass('isHidden');
 		}
 	});
+	appendFilterBreadcrumb("Untracked");
 });
 
 //show only saved/unwatched movies
@@ -104,6 +105,7 @@ $(document).on('click', '#unwatched-btn', function() {
 			$(this).addClass('isHidden');
 		}
 	});
+	appendFilterBreadcrumb("Unwatched");
 });
 
 //show only watched movies
@@ -118,6 +120,7 @@ $(document).on('click', '#watched-btn', function() {
 			$(this).addClass('isHidden');
 		}
 	});
+	appendFilterBreadcrumb("Watched");
 });
 
 //show only favorite movies
@@ -132,6 +135,7 @@ $(document).on('click', '#fav-btn', function() {
 			$(this).addClass('isHidden');
 		}
 	});
+	appendFilterBreadcrumb("Favorites");
 });
 
 $(document).on('click', '.deleteCardBtn', function() {

@@ -5,7 +5,8 @@ let $ = require('jquery');
 let Handlebars = require('hbsfy/runtime');
 Handlebars.registerPartial( "movieInfoPartial", require('../templates/partials/movie-info.hbs') );
 let searchCardTemplate = require ('../templates/searchCards.hbs');
-let unwatchedCardTemplate = require ('../templates/unwatchedCard.hbs');
+// let unwatchedCardTemplate = require ('../templates/unwatchedCard.hbs');
+let savedCardsTemplate = require('../templates/savedCards.hbs');
 
 let fbFactory = require('./firebase-factory');
 let fbURL = "https://schmoovies-e903e.firebaseio.com";
@@ -17,8 +18,8 @@ module.exports.searchDataToMovieCards = (data) => {
 
 module.exports.savedFBToMovieCards = (data) => {
 	console.log('user movies from FB', data);
-	let cards = unwatchedCardTemplate({movies: data});
-	$("#movieContainer").html(cards);
+	let cards = savedCardsTemplate({movies: data});
+	$("#movieContainer").append(cards);
 };
 
 module.exports.deleteFromScreen = (movieObjId) => {
@@ -42,6 +43,7 @@ module.exports.showSavedMovies = () => {
 	fbFactory.getUserMovies()
 	.then( (userMovieData) => {
 		console.log('userMovieData', userMovieData);
+		// module.exports.savedFBToMovieCards(userMovieData);
 		module.exports.savedFBToMovieCards(userMovieData);
 	})
 	.catch( (error) => {

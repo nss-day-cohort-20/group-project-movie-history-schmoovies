@@ -11,12 +11,8 @@ let $container = $('#movieContainer');
 let $searchInput = $('#text-search-input');
 let $radioNew = $('#new-search-radio');
 
-<<<<<<< HEAD
-//HANDLERS
 
-=======
 let filteredMovies = [];
->>>>>>> ask-search
 //Search handler - show all matching saved movies, then api matches
 $(document).on('keyup', '#text-search-input', function() {
 	// console.log('input event', event);

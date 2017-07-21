@@ -20,6 +20,8 @@ module.exports.savedFBToMovieCards = (data) => {
 	// console.log("keys on movies", Object.keys(data));
 	let moviesToRender = [];
 	for(var movie in data) {
+		// console.log('movie var in for in loop',movie);
+		// console.log('data in for in loop',data[movie]);
 		data[movie].fbId = movie;
 		moviesToRender.push(data[movie]);
 	}

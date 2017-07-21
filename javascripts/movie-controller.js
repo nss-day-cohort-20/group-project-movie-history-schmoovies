@@ -17,7 +17,7 @@ let filteredMovies = [];
 $(document).on('keyup', '#text-search-input', function() {
 	// console.log('input event', event);
 	if (event.key === 'Enter') {
-		$container.empty();
+		$('#movieContainer').empty();
 		//grab search string
 		let queryString = $('#text-search-input').val();
 		//get user's movies
@@ -30,12 +30,12 @@ $(document).on('keyup', '#text-search-input', function() {
 				}
 			}
 			movieViewController.savedFBToMovieCards(filteredMovies);
-			// movieViewController.movieCardsView(filteredMovies);
 			return db.newMoviesSearch(queryString);
 		  })
+		//get search results
 		.then( (newMovies) => {
 			movieViewController.searchDataToMovieCards(newMovies);
-
+			//check DB movie ID for each result, remove from DOM if match
 			newMovies.results.forEach( (movie) => {
 				filteredMovies.forEach( (fmovie) => {
 					if(movie.id === fmovie.id) {
@@ -45,7 +45,6 @@ $(document).on('keyup', '#text-search-input', function() {
 				});
 			});
 		});
-
 	}
 });
 
@@ -70,3 +69,61 @@ $(document).on('click', '.rating span', function() {
 	console.log('rating object', ratingObj);
 	// fbFactory.modifyRating(ratingObj);
 });
+
+//FILTERS - TODO - Dry these up.
+//show only unsaved/untracked movies
+$(document).on('click', '#untracked-btn', function() {
+	let allMovieCards = $('.movieCard');
+	allMovieCards.each( function() {
+		$(this).addClass('isHidden');
+		if ( $(this).hasClass('searchResult') ) {
+			$(this).removeClass('isHidden');
+		}
+	});
+});
+
+//show only saved/unwatched movies
+$(document).on('click', '#unwatched-btn', function() {
+	let allMovieCards = $('.movieCard');
+	allMovieCards.each( function() {
+		$(this).removeClass('isHidden');
+		if ( $(this).data('rating') != 0 ) {
+			$(this).addClass('isHidden');
+		}
+		if ( $(this).hasClass('searchResult') ){
+			$(this).addClass('isHidden');
+		}
+	});
+});
+
+//show only watched movies
+$(document).on('click', '#watched-btn', function() {
+	let allMovieCards = $('.movieCard');
+	allMovieCards.each( function() {
+		$(this).removeClass('isHidden');
+		if ($(this).data('rating')  < 1 ) {
+			$(this).addClass('isHidden');
+		}
+		if ( $(this).hasClass('searchResult') ){
+			$(this).addClass('isHidden');
+		}
+	});
+});
+
+//show only favorite movies
+$(document).on('click', '#fav-btn', function() {
+	let allMovieCards = $('.movieCard');
+	allMovieCards.each( function() {
+		$(this).removeClass('isHidden');
+		if ( $(this).data('rating') < 9 ) {
+			$(this).addClass('isHidden');
+		}
+		if ( $(this).hasClass('searchResult') ){
+			$(this).addClass('isHidden');
+		}
+	});
+});
+
+
+
+

@@ -5,7 +5,6 @@ let $ = require('jquery');
 let Handlebars = require('hbsfy/runtime');
 Handlebars.registerPartial( "movieInfoPartial", require('../templates/partials/movie-info.hbs') );
 let searchCardTemplate = require ('../templates/searchCards.hbs');
-// let unwatchedCardTemplate = require ('../templates/unwatchedCard.hbs');
 let savedCardsTemplate = require('../templates/savedCards.hbs');
 
 let fbFactory = require('./firebase-factory');
@@ -44,7 +43,6 @@ module.exports.deleteFromScreen = (movieObjId) => {
 	});
 };
 
-//show saved movies
 module.exports.showSavedMovies = () => {
 	console.log('showSavedMovies fn');
 	fbFactory.getUserMovies()
@@ -58,5 +56,5 @@ module.exports.showSavedMovies = () => {
 	});
 };
 
-// watchedLink
-
+//Filters - unwatched
+//

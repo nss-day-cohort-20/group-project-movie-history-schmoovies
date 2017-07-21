@@ -20,6 +20,7 @@ $(document).on('keyup', '#text-search-input', function() {
 		$container.empty();
 		//grab search string
 		let queryString = $('#text-search-input').val();
+		$('#text-search-input').val('');
 		//get user's movies
 		fbFactory.getUserMovies()
 		.then( (userMovies) => {
@@ -34,13 +35,14 @@ $(document).on('keyup', '#text-search-input', function() {
 		  })
 		//get search results
 		.then( (newMovies) => {
+			console.log("newMovies", newMovies);
 			movieViewController.searchDataToMovieCards(newMovies);
 			//check DB movie ID for each result, remove from DOM if match
 			newMovies.results.forEach( (movie) => {
 				filteredMovies.forEach( (fmovie) => {
 					if(movie.id === fmovie.id) {
 						console.log("found one");
-						$(`#searchedMovie${fmovie.id}`).remove();
+						$(`#searchedMovie${fmovie.id}`).remove(); //change the template instead
 					}
 				});
 			});
@@ -62,8 +64,9 @@ $(document).on('click', `.saveMovieLink`, function() {
 	let movieId = event.target.classList[1]; //get the movie id
 	db.getOneMovie(movieId)
 	.then( (recievedMovieObj) => {
-		console.log("recievedMovieObj",recievedMovieObj);
+		// console.log("recievedMovieObj",recievedMovieObj);
 		fbFactory.saveInFirebase(recievedMovieObj);
+		movieViewController.savedFBToMovieCards(recievedMovieObj);
 	});
 });
 
@@ -131,6 +134,11 @@ $(document).on('click', '#fav-btn', function() {
 	});
 });
 
+$(document).on('click', '.deleteCardBtn', function() {
+	let movieId = event.target.classList[1].slice(6);
 
-
+	// console.log("id", movieId);
+	// console.log("movie", $(`.movie${movieId}`));
+	// $(`.movie${movieId}`).remove();
+});
 

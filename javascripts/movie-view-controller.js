@@ -35,7 +35,7 @@ module.exports.deleteFromScreen = (movieObjId) => {
 	      type: "GET"
 	    }).done( (movieObj) => {
 	    	let movieId = movieObj.id;
-	      $(`#movie${movieId}`).remove();
+	      $(`#searchedMovie${movieId}`).remove();
 	      resolve(movieObj.id);
 	    }).fail( (err) => {
 	    	console.log("error", err);
@@ -48,7 +48,6 @@ module.exports.showSavedMovies = () => {
 	fbFactory.getUserMovies()
 	.then( (userMovieData) => {
 		console.log('userMovieData', userMovieData);
-		// module.exports.savedFBToMovieCards(userMovieData);
 		module.exports.savedFBToMovieCards(userMovieData);
 	})
 	.catch( (error) => {

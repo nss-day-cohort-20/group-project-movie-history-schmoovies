@@ -78,7 +78,7 @@ $(document).on('click', '.rating span', function() {
 
 //change breadcrumb on filter
 function appendFilterBreadcrumb(filterName) {
-	let breadcrumbString = `<h2>Movie History > <span>&nbsp; ${filterName} </span></h2>`;
+	let breadcrumbString = `<h2>Movie History > <span> ${filterName} </span></h2>`;
 	$('#pageStatus').html(breadcrumbString);
 }
 //show only unsaved/untracked movies
